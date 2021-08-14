@@ -216,8 +216,8 @@ Write-host "Primary user of the each device are shown bellow"
 Write-Host ""
 Write-host "$($deviceid_array | Format-Table | Out-String)" -ForegroundColor Cyan
 
-#$GroupName= $(Write-Host "Creating Azure Active Directory Group " -NoNewline) + $(write-host "P3-IT-$RecommendationGroupName): " -ForegroundColor DarkYellow -NoNewline; Read-Host "P3-IT-$($Devicelist.ConfigurationName)")
-$GroupName = "P3-IT-$($RecommendationGroupName)"
+#$GroupName= $(Write-Host "Creating Azure Active Directory Group " -NoNewline) + $(write-host "$RecommendationGroupName): " -ForegroundColor DarkYellow -NoNewline; Read-Host "$($Devicelist.ConfigurationName)")
+$GroupName = "$($RecommendationGroupName)"
 #$GroupDescription = $(write-host "Please enter description for this group:  " -ForegroundColor Yellow -NoNewline; Read-Host)
 $GroupDescription = "$RecommendationGroupName"
 $GroupObjectId = $(New-AzureADGroup -DisplayName $GroupName -mailenabled $false -SecurityEnabled $true -description $GroupDescription -MailNickName "NotSet") | Select-Object ObjectId 
@@ -248,7 +248,7 @@ foreach($user in $deviceid_array){
 
     $userId = $user.PrimaryUser
     $upn = $user.userPrincipalName
-    $MemebersGroupId = $(Get-azureadGroup -filter "DisplayName eq 'P3-IT-$($RecommendationGroupName)'").ObjectId
+    $MemebersGroupId = $(Get-azureadGroup -filter "DisplayName eq '$($RecommendationGroupName)'").ObjectId
     #$mebership = Get-AzureADUserMembership -objectId "$membersgroupid"       
   
                 Write-Color -Text "Adding ","$UPN"," to ","$groupname"," Azure Active Directry Group" -Color Yellow,Green,Yellow,Green,Yellow
