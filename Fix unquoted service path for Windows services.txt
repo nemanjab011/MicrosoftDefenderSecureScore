@@ -1,0 +1,9 @@
+﻿DeviceTvmSecureConfigurationAssessmentKB
+| join (DeviceTvmSecureConfigurationAssessment
+| where IsCompliant == 0) on ConfigurationId
+| where ConfigurationName contains "Fix unquoted service path for Windows services"
+| project DeviceName,ConfigurationName, ConfigurationDescription
+
+
+
+	
