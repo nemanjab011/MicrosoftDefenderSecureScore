@@ -1,7 +1,7 @@
 
-$AppId = "6b86d099-68ab-49ec-a301-4ba695ff278e"
-$TenantId = "38ea53fb-9117-4764-adc6-31f828910b30"
-$AppSecret = ''
+$AppId = "enter your application id"
+$TenantId = "enter your tenant id"
+$AppSecret = 'enter your app secret'
 
 #########################################################################################################
 # Construct URI and body needed for authentication
@@ -166,10 +166,7 @@ return $ATPresults
 
 #################################################################################################### 
 
-#$ATPresults.DeviceName
-#$Devicelist = $ATPresults.Devicename #| Select-Object Devicename
-#$DeviceList = Import-Csv 'C:\Users\ybn\OneDrive\temp\Set default behavior for ''AutoRun'' to ''Enabled_ Do not execute any autorun commands'' - Exposed devices.csv'
-#$Devicelist.GetType().Name
+
 
 
 $Devicelist = Get-ATPAdvancedHuntingQuery -TxtFilePath '.\Fix unquoted service path for Windows services.txt' | Select-Object ConfigurationName, Devicename, ConfiguratioDescription -Last 20
@@ -264,7 +261,7 @@ foreach($user in $deviceid_array){
 
 #####################################################################################################################################
 
-$ScriptPath = "C:\Users\ybn\OneDrive - P3 group GmbH\Git- Infra-Bicep\InfraAsaCode\ATP"
+$ScriptPath = "path to your script"
 $ScriptName = "$($RecommendationGroupName).ps1"
 $IntuneParams = @{
     ScriptName = $ScriptName
